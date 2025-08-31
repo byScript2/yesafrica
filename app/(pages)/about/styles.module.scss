@@ -1,0 +1,101 @@
+@use "../../utilities.module" as *;
+.about {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 0.9rem;
+  gap: 100px;
+  padding: 10% 0;
+  div {
+    display: flex;
+  }
+  .texts {
+    padding: 0 25%;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  section {
+    padding: 0% 5%;
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    h2 {
+      color: $p;
+    }
+    .group {
+      flex-direction: column;
+      gap: 20px;
+      background: linear-gradient(to bottom, $bg, $bg2);
+      padding: 5%;
+      border: 1px solid $bg2;
+    }
+  }
+  .col {
+    flex-direction: column;
+    .list {
+      flex-wrap: wrap;
+      gap: 50px;
+      flex-direction: column;
+      width: 100%;
+
+      .items {
+        width: 100%;
+
+        .item {
+          flex: 1;
+          flex-direction: column;
+          gap: 20px;
+          background: linear-gradient(to bottom, $p, $a);
+          padding: 2.5%;
+          border: 1px solid $a;
+          justify-content: center;
+          color: $w;
+          .title {
+            font-size: 1.2rem;
+            color: $a;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about {
+    .texts {
+      padding: 0 15%;
+    }
+    section {
+      align-items: stretch;
+
+      .group {
+        padding: 5% 2.5%;
+        justify-content: center;
+      }
+    }
+    .col {
+      gap: 50px;
+      .list {
+        .items {
+          flex-wrap: wrap;
+          .item {
+            width: 50%;
+            padding: 5%;
+            .title {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

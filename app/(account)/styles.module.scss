@@ -1,0 +1,234 @@
+@use "../utilities.module" as *;
+.box {
+  min-height: 100vh;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  position: relative;
+  background: $bg2;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .top {
+    height: 80px;
+    justify-content: space-between;
+    width: 100%;
+
+    color: $w;
+
+    padding: 0 10%;
+    border-bottom: 1px solid cwo($t, 0.1);
+    background-color: $p;
+    a {
+      transition: 0.75s;
+      &:hover {
+        color: $w;
+      }
+    }
+
+    .left {
+      position: relative;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .img {
+        height: 70px;
+        aspect-ratio: 3/2;
+
+        position: relative;
+      }
+    }
+    .right {
+      width: 50%;
+      gap: 20px;
+    }
+  }
+
+  .container {
+    width: 100%;
+    justify-content: center;
+    padding: 5% 0;
+    position: relative;
+    min-height: calc(100vh - 90px);
+    align-items: center;
+
+    .body {
+      z-index: 3;
+      width: 40%;
+      background: cwo($bg, 0.9);
+
+      padding: 2.5%;
+      border-radius: 3px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 4px solid $p;
+      box-shadow: 0 16px 8px cwo($a3, 0.1);
+
+      > div {
+        width: 100%;
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+        padding: 7.5% 0%;
+
+        h1 {
+          font-size: 2.5rem;
+          font-weight: 900;
+          color: $p;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          input {
+            padding: 3px 6px;
+            height: 50px;
+            outline: none;
+            transition: 0.75s;
+            background-color: transparent;
+            color: $t;
+            border: 1px solid $t2;
+            font-size: 1rem;
+            &:hover,
+            &:focus {
+              border-bottom: 2px solid $p;
+            }
+          }
+          select {
+            padding: 3px 6px;
+            height: 50px;
+            border: 1px solid $t2;
+            color: $t;
+            font-size: 1rem;
+            background-color: transparent;
+          }
+          div {
+            height: 50px;
+            width: 100%;
+            justify-content: space-between;
+            padding: 3px 6px;
+            border: 1px solid $t2;
+
+            &:hover {
+              border-bottom: 2px solid $t2;
+            }
+            > :first-child {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              cursor: pointer;
+            }
+            input[type="text"],
+            input[type="password"],
+            > :nth-child(2) {
+              width: 90%;
+              border: none;
+
+              &:hover {
+                border: none;
+              }
+            }
+          }
+          button {
+            margin-top: 20px;
+            height: 50px;
+
+            transition: 0.75s;
+            &:disabled {
+              opacity: 0.7;
+              cursor: not-allowed;
+            }
+          }
+          > :last-child {
+            flex-direction: row;
+            border: none;
+            padding: 0;
+            height: unset;
+
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+            color: $a;
+            width: 100%;
+            > *,
+            > :first-child {
+              width: unset !important;
+              height: unset !important;
+
+              text-align: left !important;
+              align-items: flex-start !important;
+              justify-content: flex-start !important;
+              font-size: 0.8rem;
+              cursor: pointer;
+            }
+            &:hover {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    .top {
+      padding: 0 5%;
+
+      .left {
+        position: relative;
+        width: 50%;
+
+        font-size: 0.8rem;
+        justify-content: space-between;
+        .img {
+          height: 40px;
+        }
+      }
+      .right {
+        width: 50%;
+        font-size: 0.9rem;
+        :first-child {
+          display: none;
+        }
+      }
+    }
+    .container {
+      width: 100%;
+
+      flex-direction: column;
+
+      justify-content: center;
+      padding: 15% 7.5%;
+      min-height: calc(100vh - 70px);
+      &::before {
+        height: 5vh;
+      }
+      &::after {
+        height: 15vh;
+        bottom: 0;
+        display: flex;
+      }
+      .body {
+        width: 100%;
+
+        > div {
+          h1 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

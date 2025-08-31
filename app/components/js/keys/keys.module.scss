@@ -1,0 +1,60 @@
+@use "../../../utilities.module" as *;
+
+.reasons {
+  display: flex;
+  width: 100%;
+  font-size: 0.85rem;
+  padding: 12px;
+  background: $bg2;
+  div {
+    display: flex;
+  }
+  .box {
+    width: 100%;
+    gap: 30px;
+
+    padding: 24px;
+    .reason {
+      flex-direction: column;
+      flex: 1;
+      gap: 30px;
+      align-items: center;
+      text-align: center;
+      color: $t2;
+      background-color: cwo($w, 0.4);
+      border: 2px solid $w;
+      padding: 12px;
+      transition: 0.75s;
+      border-radius: 6px;
+      &:hover {
+        background-color: cwo($w, 0.9);
+      }
+      .text {
+        flex-direction: column;
+        gap: 10px;
+        h3 {
+          color: $a;
+        }
+      }
+      .icon {
+        font-size: 3rem;
+        color: $t;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .reasons {
+    padding: 10% 5%;
+    .box {
+      padding: 0;
+      flex-wrap: wrap;
+      gap: 10px;
+      .reason {
+        min-width: 35%;
+        background-color: cwo($w, 0.8);
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+@use "sass:color";
+@mixin keyframes($action) {
+  @keyframes #{$action} {
+    @content;
+  }
+}
+
+@function cwo($color, $opacity) {
+  $rgbaColor: rgba($color, $opacity);
+  @return $rgbaColor;
+}
+@function cwb($color, $brightness) {
+  $adjustedColor: color.adjust($color, $lightness: $brightness);
+  @return $adjustedColor;
+}
+@function brg($angle, $min, $max) {
+  $color: repeating-linear-gradient($angle, $bg $min, $bg2 $max);
+  @return $color;
+}
+
+$p: #2e7d32;
+$pd: cwb($p, -5%);
+$t: #1a1a1a;
+$t2: #4e4e4e;
+$bg: #ffffff;
+$bg2: #f9fafb;
+$w: #ffffff;
+$b: #000000;
+$a: #ff5722;
+$a2: #f44336;
+$a3: #ff9800;
+
+$g: #43a047;
+$r: #d32f2f;
+
+$grad: linear-gradient(to right, $a, $a3);
+$ggrad: linear-gradient(to right, $t, $t2);
+$pgrad: linear-gradient(to right, $p, $pd);
+
+@mixin animate($name, $duration, $method, $delay, $loop, $direction) {
+  animation: $name $duration $method $delay $loop $direction;
+}
+
+@include keyframes(circleShow) {
+  0% {
+    clip-path: circle(19.1% at 51% 46%);
+  }
+  10% {
+    clip-path: circle(23.3% at 59% 59%);
+  }
+  20% {
+    clip-path: circle(24.8% at 36% 63%);
+  }
+  30% {
+    clip-path: circle(29.6% at 32% 36%);
+  }
+  40% {
+    clip-path: circle(40.5% at 54% 43%);
+  }
+  50% {
+    clip-path: circle(50% at 50% 50%);
+  }
+  70% {
+    clip-path: circle(71.5% at 50% 51%);
+  }
+  100% {
+    clip-path: circle(28.6% at 50% 51%);
+  }
+}
+@include keyframes(cycle) {
+  0% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@include keyframes(drawLine) {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@include keyframes(blink) {
+  0% {
+    background: radial-gradient($a, transparent);
+  }
+  100% {
+    background: radial-gradient(transparent, $a);
+  }
+}
+@include keyframes(glowPulse) {
+  0% {
+    box-shadow: 0 0 10px rgba($p, 0.7), 0 0 20px rgba($p, 0.5),
+      0 0 40px rgba($p, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba($p, 1), 0 0 30px rgba($p, 0.7),
+      0 0 60px rgba($p, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba($p, 0.7), 0 0 20px rgba($p, 0.5),
+      0 0 40px rgba($p, 0.3);
+  }
+}
+
+.heading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-bottom: 30px;
+  margin-bottom: 15px;
+}

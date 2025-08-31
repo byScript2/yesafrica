@@ -1,0 +1,75 @@
+@use "../../utilities.module" as *;
+.footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  gap: 40px;
+  min-height: 50vh;
+  justify-content: space-between;
+  background: linear-gradient(to right, $p, cwb($p, -5%));
+  padding: 5%;
+  color: cwo($w, 0.8);
+  div {
+    display: flex;
+  }
+  .left {
+    width: 200px;
+    aspect-ratio: 3/2;
+    position: relative;
+  }
+  .right {
+    width: 60%;
+    flex-direction: column;
+    gap: 40px;
+    a {
+      transition: 0.5s;
+      &:hover {
+        color: $w;
+      }
+    }
+    > div {
+      text-align: right;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      a {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+//sm devices
+//sm devices
+//sm devices
+
+@media (max-width: 800px) {
+  .footer {
+    flex-direction: column;
+    padding: 15% 5%;
+    .left {
+      width: 150px;
+    }
+    .right {
+      width: 100%;
+
+      > div {
+        justify-content: center;
+        a {
+          margin: 0;
+          flex: 1;
+          min-width: 40%;
+          text-align: center;
+
+          padding-bottom: 10px;
+          border-bottom: 1px solid cwo($w, 0.1);
+        }
+        span {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
