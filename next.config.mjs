@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [{ hostname: "firebasestorage.googleapis.com" }],
+    unoptimized: true,
   },
 };
 

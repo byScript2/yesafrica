@@ -2,7 +2,7 @@
 import Link from "next/link";
 import styles from "./footer.module.scss";
 
-import { COMPANYNAME } from "@/app/components/js/config";
+import { COMPANYNAME, SOCIALS } from "@/app/components/js/config";
 import Image from "next/image";
 interface Link {
   name: string;
@@ -47,25 +47,32 @@ const Footer: React.FC = () => {
   ];
   const date = new Date();
   return (
-    <footer className={styles.footer}>
-      <div className={styles.left}>
-        <Image src={"/logo.png"} alt="Logo" fill />
+    <footer className={styles.box}>
+      <div className={styles.footer}>
+        <div className={styles.left}>
+          <Image src={"/logo.png"} alt="Logo" fill />
+        </div>
+        <div className={styles.right}>
+          <div>
+            {links.map((subLink, index) => {
+              return (
+                <Link href={subLink.link} key={index}>
+                  {subLink.name}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
-      <div className={styles.right}>
-        <div>
-          {links.map((subLink, index) => {
-            return (
-              <Link href={subLink.link} key={index}>
-                {subLink.name}
-              </Link>
-            );
-          })}
+      <div className={styles.end}>
+        <div className={styles.socials}>
+          {SOCIALS.map((e, i) => (
+            <Link href={e.link} key={i}>
+              <e.Icon />
+            </Link>
+          ))}
         </div>
-        <div>
-          <span>
-            {`All materials on this site Copyright © ${date.getFullYear()} ${COMPANYNAME}.`}
-          </span>
-        </div>
+        <span>{`Copyright © ${date.getFullYear()} ${COMPANYNAME}.`}</span>
       </div>
     </footer>
   );

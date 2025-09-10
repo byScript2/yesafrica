@@ -1,41 +1,58 @@
 @use "../../utilities.module" as *;
-.footer {
+.box {
   display: flex;
-  align-items: center;
-  width: 100%;
-
-  gap: 40px;
-  min-height: 50vh;
-  justify-content: space-between;
-  background: linear-gradient(to right, $p, cwb($p, -5%));
-  padding: 5%;
-  color: cwo($w, 0.8);
-  div {
+  flex-direction: column;
+  .footer {
     display: flex;
-  }
-  .left {
-    width: 200px;
-    aspect-ratio: 3/2;
-    position: relative;
-  }
-  .right {
-    width: 60%;
-    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
     gap: 40px;
-    a {
-      transition: 0.5s;
-      &:hover {
-        color: $w;
+    min-height: 50vh;
+    justify-content: space-between;
+
+    background: cwb($t2, 60%);
+    padding: 5%;
+    color: $t2;
+    div {
+      display: flex;
+    }
+    .left {
+      width: 200px;
+      aspect-ratio: 3/2;
+      position: relative;
+    }
+    .right {
+      width: 60%;
+      flex-direction: column;
+      gap: 40px;
+      a {
+        transition: 0.5s;
+        &:hover {
+          color: $t;
+        }
+      }
+      > div {
+        text-align: right;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+        a {
+          margin-right: 20px;
+        }
       }
     }
-    > div {
-      text-align: right;
-      justify-content: flex-end;
+  }
+  .end {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 10%;
+    gap: 20px;
+    .socials {
+      display: flex;
       gap: 10px;
-      flex-wrap: wrap;
-      a {
-        margin-right: 20px;
-      }
+      font-size: 1.5rem;
+      color: $a;
     }
   }
 }
@@ -45,31 +62,38 @@
 //sm devices
 
 @media (max-width: 800px) {
-  .footer {
-    flex-direction: column;
-    padding: 15% 5%;
-    .left {
-      width: 150px;
-    }
-    .right {
-      width: 100%;
+  .box {
+    .footer {
+      flex-direction: column;
+      padding: 15% 5%;
+      .left {
+        width: 150px;
+      }
+      .right {
+        width: 100%;
 
-      > div {
-        justify-content: center;
-        a {
-          margin: 0;
-          flex: 1;
-          min-width: 40%;
-          text-align: center;
+        > div {
+          justify-content: center;
+          a {
+            margin: 0;
+            flex: 1;
+            min-width: 40%;
+            text-align: center;
 
-          padding-bottom: 10px;
-          border-bottom: 1px solid cwo($w, 0.1);
-        }
-        span {
-          width: 100%;
-          text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid cwo($t2, 0.1);
+          }
+          span {
+            width: 100%;
+            text-align: center;
+          }
         }
       }
+    }
+    .end {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
   }
 }
