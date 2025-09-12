@@ -1,0 +1,48 @@
+@use "../../../utilities.module" as *;
+.main {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+  padding: 10%;
+  div {
+    display: flex;
+  }
+  .items {
+    width: 100%;
+    gap: 40px;
+    flex-wrap: wrap;
+    .item {
+      flex-direction: column;
+      padding: 24px;
+      flex: 1;
+      min-width: 30%;
+      border: 1px solid cwo($t2, 0.1);
+      background-color: $bg2;
+      box-shadow: 0 4px 16px cwo($t2, 0.1);
+      gap: 20px;
+      align-items: flex-start;
+      border-radius: 6px;
+      .title {
+        font-size: 1.5rem;
+      }
+      .icon {
+        font-size: 4rem;
+        color: $a3;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    .items {
+      flex-direction: column;
+      .item {
+        flex-direction: column;
+
+        flex: unset;
+      }
+    }
+  }
+}

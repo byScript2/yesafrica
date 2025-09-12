@@ -8,10 +8,11 @@ import { makeToken } from "@/app/components/js/token";
 
 export async function POST(req: Request) {
   try {
+    throw new Error();
     await connection();
     const body = await req.json();
     const { password } = body;
-    body.role = 2;
+    body.role = 0;
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);

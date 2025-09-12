@@ -31,7 +31,7 @@ export const GET = async (req: Request) => {
   try {
     await connection();
 
-    const events = await Event.find().sort({ date: -1 });
+    const events = await Event.find({ hidden: false }).sort({ date: -1 });
 
     return new NextResponse(JSON.stringify(events), {
       status: 200,

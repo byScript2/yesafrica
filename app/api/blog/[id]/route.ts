@@ -3,6 +3,7 @@ import connection from "@/app/components/js/connection";
 import { NextResponse } from "next/server";
 import verifyToken from "@/app/components/js/token";
 import Blog from "@/app/components/models/Blog";
+import User from "@/app/components/models/User";
 
 export const PUT = async (
   req: Request,
@@ -49,8 +50,10 @@ export const GET = async (
     await connection();
 
     const data = await Blog.findById(params.id);
+    const author = await User.findById(data.authorId);
+    const returnType = { ...data._doc, author };
 
-    return new NextResponse(JSON.stringify(data), {
+    return new NextResponse(JSON.stringify(returnType), {
       status: 200,
     });
   } catch (error) {

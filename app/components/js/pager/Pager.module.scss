@@ -10,8 +10,8 @@
   position: relative;
   border-radius: 12px;
   background-color: $bg;
-  border: 1px solid cwo($w, 0.2);
-  color: $w;
+  border: 1px solid cwo($a, 0.2);
+  color: $t;
   div {
     display: flex;
     align-items: center;

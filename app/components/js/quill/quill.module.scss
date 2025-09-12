@@ -1,0 +1,36 @@
+.quill {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  min-height: 400px;
+  gap: 20px;
+  .top {
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .btn {
+      cursor: pointer;
+      color: var(--p);
+    }
+  }
+  .bottom {
+    width: 100%;
+    flex-grow: 1;
+
+    > div {
+      width: 100%;
+
+      border: 1px solid var(--g);
+
+      div {
+        display: block;
+
+        min-height: 350px;
+      }
+      * {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -41,7 +41,9 @@ export const uploadFile = async (
     if (image.files && image.files[0]) {
       const imgRef = ref(
         storage,
-        `/${COMPANYNAME.split(" ")[0]}/images/${title}/${title}${i}`
+        `/${
+          COMPANYNAME.replaceAll(".", "").split(" ")[0]
+        }/images/${title}/${title}${i}`
       );
       await uploadBytes(imgRef, image.files[0]);
       const url = await getDownloadURL(imgRef);

@@ -12,10 +12,10 @@ const handleProtected = async (admin: boolean = false, vot?: string) => {
   const { data, success } = await postRequest(tokenUrl, { token }, token);
 
   if (!success) redirect("/login");
-  if (!data.verified) {
-    redirect(`/verify_email?vot=${vot}`);
-  }
-  if (admin && !data.admin) {
+  // if (!data.verified) {
+  //   redirect(`/verify_email?vot=${vot}`);
+  // }
+  if (admin && data.role < 1) {
     redirect("/dashboard");
   }
   return token;

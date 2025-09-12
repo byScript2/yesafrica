@@ -33,7 +33,7 @@ export default function Body() {
           handle();
         }}
       >
-        <label>Email or Username</label>
+        <label>Email</label>
         <input
           type="text"
           value={email}
@@ -49,7 +49,7 @@ export default function Body() {
           Login
         </button>
         <div>
-          <Link href={"/signup"}>Create Account</Link>
+          {/* <Link href={"/signup"}>Create Account</Link> */}
           <Link href={"/forgotpassword"}>Forgot Password</Link>
         </div>
       </form>

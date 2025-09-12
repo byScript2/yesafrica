@@ -28,7 +28,7 @@ const media = new mongoose.Schema<MediaResponseType>(
     orientation: {
       type: String,
       required: true,
-      enum: ["PORTRAIT", "LANDSCAPE"],
+      enum: ["SQUARE", "PORTRAIT", "LANDSCAPE"],
     },
   },
   { timestamps: true }

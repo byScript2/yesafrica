@@ -3,47 +3,36 @@ import styles from "../style.module.scss";
 export default function Page() {
   const texts: { title: string; text: string }[] = [
     {
-      title: `Accuracy of Information`,
-      text: `The information provided on this website is intended for general informational purposes only. While ${COMPANYNAME} makes every effort to ensure the accuracy, completeness, and timeliness of the information presented, we cannot guarantee that it is entirely free from errors or omissions. The content on this website may be subject to change without prior notice.`,
+      title: "General Information",
+      text: "The content on this website is provided by Y.E.S. Africa Foundation for general informational and educational purposes only. While we strive for accuracy, we make no warranties or guarantees about the completeness or reliability of any information shared.",
     },
     {
-      title: `Not Financial Advice`,
-      text: `The information provided on this website, including but not limited to investment plans, returns, and market trends, is for informational purposes only. It should not be considered as financial advice or recommendations to invest. You are encouraged to seek independent financial advice from a qualified professional before making any investment decisions.`,
+      title: "No Professional Advice",
+      text: "The materials and resources provided by Y.E.S. Africa Foundation should not be interpreted as legal, financial, medical, or professional advice. Visitors are encouraged to seek independent professional guidance where necessary.",
     },
     {
-      title: `Investment Risks`,
-      text: `Investing in cryptocurrencies and related activities involves inherent risks, including but not limited to market volatility, regulatory changes, and potential loss of capital. Past performance is not indicative of future results, and there are no guarantees of profit.`,
+      title: "External Links",
+      text: "Our website may include links to external websites or resources. Y.E.S. Africa Foundation is not responsible for the content, accuracy, or practices of third-party sites and does not necessarily endorse the views expressed therein.",
     },
     {
-      title: `Regulatory Compliance`,
-      text: `${COMPANYNAME} operates in accordance with relevant laws and regulations, but the cryptocurrency industry is subject to evolving legal frameworks. It is your responsibility to ensure that you comply with any local, national, or international regulations related to cryptocurrency investments in your jurisdiction.`,
+      title: "Use of Donations",
+      text: "All donations made to Y.E.S. Africa Foundation are used to support our programmes, initiatives, and operational needs in line with our mission. While we commit to transparency, we reserve the right to allocate resources where they are most needed.",
     },
     {
-      title: `Use of Cookies`,
-      text: `${COMPANYNAME} may use cookies to enhance your browsing experience on this website. Cookies are small text files that may be stored on your computer or device when you visit our website. We use cookies for various purposes, including analyzing website traffic and providing personalized content. You can manage your cookie preferences by adjusting your browser settings.`,
+      title: "Limitation of Liability",
+      text: "Y.E.S. Africa Foundation will not be held liable for any losses, damages, or inconveniences arising from the use of our website, participation in our programmes, or reliance on any information provided here.",
     },
     {
-      title: `Security and Privacy`,
-      text: `While we take security measures to protect your data and investments, the nature of online services carries inherent risks. ${COMPANYNAME} is not liable for any loss or damage resulting from unauthorized access, breaches, or data loss.`,
-    },
-    {
-      title: `Third-Party Links`,
-      text: `Our website may contain links to third-party websites or resources. ${COMPANYNAME} is not responsible for the content, accuracy, or availability of these external sites. Any reliance on third-party content is at your own risk.`,
-    },
-    {
-      title: `Intellectual Property Rights`,
-      text: `All content, including text, images, graphics, logos, and trademarks on this website, is protected by intellectual property laws. You may not reproduce, distribute, or use any content from this website without the prior written consent of ${COMPANYNAME}.`,
-    },
-    {
-      title: `Changes to Disclaimer`,
-      text: `${COMPANYNAME} reserves the right to modify, amend, or update this disclaimer at any time. Any changes will be effective immediately upon posting on this page. We encourage you to review this disclaimer periodically to stay informed of any updates.`,
+      title: "Policy Updates",
+      text: "This disclaimer may be updated from time to time to reflect changes in our operations or regulatory requirements. We encourage visitors to review it periodically for the latest information.",
     },
   ];
+
   return (
     <div className={styles.main}>
       <div className={styles.container}>
         <h1>Disclaimer: {COMPANYNAME}</h1>
-        <p>{`Before you explore our website, we want to ensure that you understand and agree to the terms and conditions outlined in this disclaimer. By accessing and using this website, you acknowledge and accept the following terms and conditions:`}</p>
+
         {texts.map((e, i) => (
           <div key={i}>
             <h3>{e.title}</h3>

@@ -24,6 +24,7 @@ export interface EventResponseType extends EveryResponseType {
   max: number;
   body: string;
   fee: number;
+  hidden: boolean;
 }
 export interface BlogResponseType extends EveryResponseType {
   title: string;
@@ -40,7 +41,7 @@ export interface MediaResponseType extends EveryResponseType {
   desc: string;
   type: "PDF" | "IMAGE" | "VIDEO";
   source: "SITE" | "YOUTUBE" | "OTHERS";
-  orientation: "PORTRAIT" | "LANDSCAPE";
+  orientation: "PORTRAIT" | "LANDSCAPE" | "SQUARE";
 }
 export interface AttendeeResponseType extends EveryResponseType {
   email: string;
@@ -51,6 +52,7 @@ export interface AttendeeResponseType extends EveryResponseType {
   image: string;
   idNo: string;
   reference: string;
+  event: EventResponseType;
 }
 export interface DonationResponseType extends EveryResponseType {
   name: string;

@@ -111,7 +111,7 @@
             position: relative;
             aspect-ratio: 3/2;
             img {
-              object-fit: cover;
+              object-fit: contain;
             }
           }
           .menuIcon {

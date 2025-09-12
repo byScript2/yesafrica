@@ -1,0 +1,98 @@
+@use "../../utilities.module" as *;
+.main {
+  display: flex;
+  gap: 100px;
+  flex-direction: column;
+  width: 100%;
+  div {
+    display: flex;
+  }
+  .items {
+    width: 100%;
+    padding: 10%;
+
+    gap: 50px;
+    flex-direction: column;
+    .item {
+      width: 100%;
+      height: 85vh;
+      align-items: center;
+      .image {
+        width: 60%;
+        height: 100%;
+        position: relative;
+        img {
+          object-fit: cover;
+        }
+      }
+      .text {
+        width: 40%;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 40px;
+        height: 100%;
+        justify-content: center;
+        .heading {
+          padding-bottom: 40px;
+          margin-bottom: 30px;
+          .title {
+            font-size: 3rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    > :nth-child(even) {
+      flex-direction: row-reverse;
+      .image {
+        width: 50%;
+      }
+      .text {
+        width: 50%;
+        padding: 24px;
+        background-color: cwb($t2, 60%);
+      }
+    }
+  }
+  .involved {
+    width: 100%;
+    padding: 5% 10%;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(to right, $t, $b);
+    color: $w;
+  }
+}
+@media screen and (max-width: 800px) {
+  .main {
+    .items {
+      gap: 100px;
+      .item,
+      > :nth-child(even) {
+        flex-direction: column;
+
+        height: unset;
+        gap: 40px;
+        .image {
+          width: 100%;
+          height: 40vh;
+        }
+        .text {
+          width: 100%;
+          flex-direction: column;
+          background-color: transparent;
+          padding: 0;
+          height: unset;
+
+          .heading {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    .involved {
+      padding: 10%;
+    }
+  }
+}

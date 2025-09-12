@@ -1,9 +1,5 @@
 import jwt from "jsonwebtoken";
-import {
-  AttendeeResponseType,
-  DonationResponseType,
-  UserResponseType,
-} from "./dataTypes";
+import { AttendeeResponseType, UserResponseType } from "./dataTypes";
 const verifyToken = (token: string): UserResponseType =>
   jwt.verify(token, `${process.env.SECRET}`) as UserResponseType;
 
@@ -58,6 +54,7 @@ export function makeId(eventName: string, length = 5) {
     const randomIndex = Math.floor(Math.random() * chars.length);
     password += chars[randomIndex];
   }
+  return password;
 }
 
 export default verifyToken;

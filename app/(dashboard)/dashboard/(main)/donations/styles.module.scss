@@ -1,0 +1,61 @@
+@use "../../../../utilities.module" as *;
+.main {
+  display: flex;
+
+  align-items: flex-start;
+  gap: 100px;
+  width: 100%;
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex: 1;
+    .top {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid $t2;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      width: 100%;
+      .item {
+        flex: 1;
+        min-width: 40%;
+        max-width: 50%;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid cwo($t2, 0.3);
+        padding: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    flex-direction: column;
+
+    .right {
+      flex-direction: column;
+      gap: 50px;
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        width: 100%;
+        .item {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

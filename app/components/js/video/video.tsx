@@ -1,14 +1,17 @@
 "use client";
+import Image from "next/image";
 import styles from "./video.module.scss";
 import { useEffect } from "react";
 export default function GoogleVideoCase({
   src: sr,
   title,
   text,
+  orientation,
 }: {
   src: string;
-  title: string;
+  title?: string;
   text?: string;
+  orientation: "PORTRAIT" | "LANDSCAPE" | "SQUARE";
 }) {
   const src = sr.replace("/view?usp=sharing", "/preview");
   useEffect(() => {
@@ -35,11 +38,17 @@ export default function GoogleVideoCase({
 
   return (
     <div className={styles.main} id={src}>
-      <p>{title}</p>
+      {title && <p>{title}</p>}
       {text && <p>{text}</p>}
 
       <iframe
-        className={`video ${styles.video}`}
+        className={`video ${styles.video} ${
+          orientation == "LANDSCAPE"
+            ? styles.landscape
+            : orientation == "PORTRAIT"
+            ? styles.portrait
+            : ""
+        }`}
         src={""}
         aria-describedby={src}
         title="Google video player"
@@ -53,10 +62,12 @@ export function YoutubeVideoCase({
   src: sr,
   title,
   text,
+  orientation,
 }: {
   src: string;
-  title: string;
+  title?: string;
   text?: string;
+  orientation: "PORTRAIT" | "LANDSCAPE" | "SQUARE";
 }) {
   const VIDEO_ID = sr.split(".be/")[1];
   const src = `https://www.youtube.com/embed/${VIDEO_ID}`;
@@ -84,17 +95,57 @@ export function YoutubeVideoCase({
 
   return (
     <div className={styles.main} id={src}>
-      <p>{title}</p>
+      {title && <p>{title}</p>}
       {text && <p>{text}</p>}
 
       <iframe
-        className={`video ${styles.video}`}
+        className={`video ${styles.video} ${
+          orientation == "LANDSCAPE"
+            ? styles.landscape
+            : orientation == "PORTRAIT"
+            ? styles.portrait
+            : ""
+        }`}
         src={""}
         aria-describedby={src}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />
+    </div>
+  );
+}
+export function ImageCase({
+  src,
+  title,
+  text,
+  orientation,
+}: {
+  src: string;
+  title?: string;
+  text?: string;
+  orientation: "PORTRAIT" | "LANDSCAPE" | "SQUARE";
+}) {
+  return (
+    <div className={`${styles.main} ${styles.box}`} id={src}>
+      {(title || text) && (
+        <div className={styles.text}>
+          {title && <p>{title}</p>}
+          {text && <p>{text}</p>}
+        </div>
+      )}
+
+      <div
+        className={`${styles.image} ${
+          orientation == "LANDSCAPE"
+            ? styles.landscape
+            : orientation == "PORTRAIT"
+            ? styles.portrait
+            : ""
+        }`}
+      >
+        <Image src={src} alt={""} fill />
+      </div>
     </div>
   );
 }

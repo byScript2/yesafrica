@@ -1,6 +1,5 @@
 import { postRequest } from "@/app/components/js/api_client";
 import { attendeeUrl, donationUrl } from "@/app/components/js/config";
-import connection from "@/app/components/js/connection";
 
 import { verifyPaymentToken } from "@/app/components/js/token";
 
@@ -22,7 +21,7 @@ async function handleDetails(reference: string, xop: string) {
 
     if (!data.status || data.data.amount < amount)
       throw new Error("Invalid payment");
-    await connection();
+
     details.reference = reference;
     const { success } = details.eventId
       ? await postRequest(attendeeUrl, details)

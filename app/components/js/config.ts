@@ -24,6 +24,11 @@ export const WEBLINK = `https://www.yesafricafoundation.com`;
 export const EMAIL = `info@yesafricafoundation.com`;
 export const TEL = `+2348033565682`;
 export const TEL2 = `+2348033565682`;
+
+export const FILETYPES = ["IMAGE", "VIDEO"];
+export const FILESOURCES = ["SITE", "YOUTUBE", "OTHERS"];
+export const FILEORIENTATIONS = ["SQUARE", "PORTRAIT", "LANDSCAPE"];
+export const MaxFileSize = 2 * 1024 * 1024;
 export const SOCIALS: { Icon: IconType; link: string }[] = [
   {
     Icon: FaInstagram,

@@ -1,0 +1,98 @@
+@use "../../utilities.module" as *;
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding: 10%;
+  div {
+    display: flex;
+  }
+  ul,
+  ol {
+    padding-left: 18px;
+  }
+  .heading {
+    align-items: flex-start;
+    width: 50%;
+    text-align: left;
+    padding-bottom: 40px;
+  }
+  .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .row {
+    width: 100%;
+    gap: 50px;
+    justify-content: flex-start;
+    .left {
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+
+      .heading {
+        width: 100%;
+        gap: 20px;
+        padding-bottom: 50px;
+      }
+      h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        font-family: var(--text);
+      }
+      h2 {
+        font-size: 4rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: $a;
+      }
+    }
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 50%;
+      input,
+      select,
+      textarea {
+        height: 50px;
+        font-size: 1rem;
+        padding: 3px;
+        font-family: inherit;
+        border: 1px solid $t2;
+        width: 100%;
+        border-radius: 3px;
+      }
+      textarea {
+        height: 400px;
+      }
+      button {
+        height: 50px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    .heading {
+      width: 100%;
+    }
+
+    .row {
+      flex-direction: column;
+      .left,
+      .right {
+        gap: 20px;
+        flex: unset;
+        width: 100%;
+        max-width: 100%;
+        h2 {
+          font-size: 2rem;
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}

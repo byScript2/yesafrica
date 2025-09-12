@@ -23,17 +23,20 @@
 
   flex-direction: column;
   position: relative;
-
+  label {
+    width: 100%;
+  }
   input,
   textarea,
   select {
     background-color: transparent;
     border: 1px solid $t2;
-
+    color: $t;
     font-family: inherit;
     padding: 3px 6px;
     outline: none;
     height: 50px;
+    width: 100%;
     color: inherit;
     font-size: 1rem;
     &::placeholder {
@@ -57,7 +60,7 @@
     padding: 24px;
 
     background: $bg;
-    border-bottom: 4px solid $p;
+    border-bottom: 8px solid $p;
     > * {
       width: 100%;
     }
@@ -76,7 +79,7 @@
   }
   .top {
     flex-direction: column;
-    height: 20vh;
+    height: 15vh;
     width: 100%;
     justify-content: flex-start;
 
@@ -86,7 +89,7 @@
     top: 0;
     left: 0;
     z-index: 9;
-
+    box-shadow: 0 8px 8px cwo($p, 0.3);
     div {
       display: flex;
       align-items: center;
@@ -108,7 +111,7 @@
       padding: 1.5% 5%;
       justify-content: space-between;
 
-      height: 25%;
+      height: 50%;
 
       .logo {
         height: 40px;
@@ -119,16 +122,13 @@
         justify-content: flex-start;
         flex-direction: row;
         img {
-          object-fit: cover;
+          object-fit: contain;
         }
       }
     }
-    .price {
-      height: 30%;
-      background: linear-gradient(to top, $bg, $bg2);
-    }
+
     .last {
-      height: 45%;
+      height: 50%;
       justify-content: space-between;
       align-items: center;
       padding: 6px 0%;
@@ -177,12 +177,12 @@
       position: relative;
       z-index: 2;
 
-      padding: 22vh 5% 12vh;
+      padding: 20vh 5% 12vh;
       h1 {
         font-size: 2rem;
         font-weight: 900;
 
-        color: $p;
+        color: $a;
       }
 
       img {
@@ -233,13 +233,13 @@
 @media screen and (max-width: 800px) {
   .box {
     .top {
-      height: 25vh;
+      height: 12vh;
       gap: 0px;
       font-size: 0.8rem;
 
       .first {
         gap: 10px;
-        height: 25%;
+
         justify-content: space-between;
         > :last-child {
           display: none;
@@ -250,11 +250,9 @@
           text-align: right;
         }
       }
-      .price {
-        height: 28%;
-      }
+
       .last {
-        height: 47%;
+        height: 50%;
 
         gap: 5px;
         flex-wrap: wrap;
@@ -266,7 +264,7 @@
 
         a,
         button {
-          height: 50%;
+          height: 100%;
           padding: 10px;
           margin: 0;
           // flex: unset;
@@ -278,21 +276,12 @@
     }
     .center {
       .children {
-        padding: 29vh 5% 9vh;
+        padding: 15vh 5% 9vh;
         h1 {
           font-size: 1.2rem;
           margin: 0;
           padding: 0;
         }
-      }
-      .effect,
-      .effect2 {
-        height: 200px;
-        width: 200px;
-      }
-      .effect {
-        height: 300px;
-        right: 70vw;
       }
     }
     .bottom {

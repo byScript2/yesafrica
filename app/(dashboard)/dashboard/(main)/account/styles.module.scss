@@ -1,0 +1,42 @@
+@import "../../../../utilities.module";
+.main {
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .column {
+    gap: 100px;
+    width: 100%;
+    align-items: flex-start;
+    .planAccount {
+      flex: 1;
+      background-color: $bg;
+      padding: 24px;
+      box-shadow: 8px 8px 8px cwo($p, 0.1);
+      border-radius: 6px;
+      .text {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    form {
+      flex: 1;
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .main {
+    flex-direction: column;
+
+    .column {
+      width: 100%;
+      flex-direction: column;
+      .planAccount {
+        width: 100%;
+      }
+    }
+  }
+}

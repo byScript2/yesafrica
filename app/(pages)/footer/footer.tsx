@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
 
     {
       name: "Donations",
-      link: "/donation",
+      link: "/get_involved/donate",
     },
     {
       name: "Disclaimer",
@@ -67,7 +67,12 @@ const Footer: React.FC = () => {
       <div className={styles.end}>
         <div className={styles.socials}>
           {SOCIALS.map((e, i) => (
-            <Link href={e.link} key={i}>
+            <Link
+              href={e.link}
+              key={i}
+              target={"_blank"}
+              rel="noreferrer noopener"
+            >
               <e.Icon />
             </Link>
           ))}

@@ -41,6 +41,10 @@ const event = new mongoose.Schema<EventResponseType>(
       type: Number,
       default: 1000000,
     },
+    hidden: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

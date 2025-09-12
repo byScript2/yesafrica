@@ -1,0 +1,74 @@
+@use "../../utilities.module" as *;
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10%;
+  gap: 100px;
+  div {
+    display: flex;
+  }
+  .top {
+    padding: 12px;
+    border: 1px solid $t2;
+    justify-content: space-between;
+    border-radius: 6px;
+    align-items: center;
+    > * {
+      width: 48%;
+    }
+    select {
+      height: 50px;
+      outline: none;
+      border: 1px solid $b;
+      padding: 0 6px;
+    }
+    h1 {
+      color: $a;
+    }
+  }
+  .grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    .item {
+      display: flex;
+      flex: 2;
+      height: 40vh;
+
+      min-width: 20%;
+      max-width: 40%;
+    }
+    .landscape {
+      flex: 3;
+      min-width: 30%;
+    }
+
+    .portrait {
+      flex: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    .top {
+      h1 {
+        font-size: 1rem;
+      }
+    }
+    .grid {
+      flex-direction: column;
+      .item,
+      .portrait,
+      .landscape {
+        flex: unset;
+        height: unset;
+
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}

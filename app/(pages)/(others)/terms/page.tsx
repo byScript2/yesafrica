@@ -1,68 +1,41 @@
 import styles from "../style.module.scss";
 export default function Page() {
-  const texts = [
+  const texts: { title: string; text: string }[] = [
     {
       title: "Acceptance of Terms",
-      text: [
-        "By using this platform, you agree to our terms and conditions. If you don't agree, please don't use our service.",
-      ],
+      text: "By accessing and using the Y.E.S. Africa Foundation website, you agree to comply with these Terms of Use and all applicable laws and regulations.",
     },
     {
-      title: "Eligibility",
-      text: [
-        "To use this platform, you must be at least 18 years old and able to legally enter into contracts.",
-      ],
+      title: "Use of Content",
+      text: "All information, materials, and resources on this site are the property of Y.E.S. Africa Foundation unless otherwise stated. You may view, share, or download content for personal and non-commercial use only, provided you acknowledge the source.",
     },
     {
-      title: "Investment Risk",
-      text: [
-        "All investments come with a risk. Please remember that past results do not guarantee future performance.",
-        "H.I.G. Equity is not responsible for any financial losses that may occur from your investment decisions on this platform.",
-      ],
+      title: "Programme Participation",
+      text: "Participation in our programmes, events, or initiatives is subject to eligibility requirements and the Foundation’s guidelines. We reserve the right to accept or decline applications at our discretion.",
     },
     {
-      title: "Account Responsibility",
-      text: [
-        "You are responsible for keeping your login credentials confidential.",
-        "You agree to notify us immediately if you suspect any unauthorized activity on your account.",
-      ],
+      title: "Donations",
+      text: "Donations made to Y.E.S. Africa Foundation are voluntary and non-refundable. Funds will be allocated to support our mission, programmes, and operations in the best interest of our beneficiaries.",
     },
     {
-      title: "Use of Platform",
-      text: [
-        "You agree to only use our platform for legal purposes and in a way that follows all applicable regulations.",
-        "You may not attempt to interfere with the platform's functionality or security.",
-      ],
+      title: "User Conduct",
+      text: "Visitors and participants are expected to engage respectfully with our community. Any misuse of the website, abusive behaviour, or unlawful activity may result in restricted access or legal action.",
     },
     {
-      title: "Privacy Policy",
-      text: [
-        "We handle your personal data according to our Privacy Policy, which explains how we collect, store, and use your information.",
-      ],
+      title: "External Links",
+      text: "Our website may contain links to external sites. Y.E.S. Africa Foundation does not endorse and is not responsible for the content, services, or practices of third-party websites.",
     },
     {
-      title: "Modification of Terms",
-      text: [
-        "We can update or change these terms at any time. Your continued use of the platform after any changes means you accept the new terms.",
-      ],
+      title: "Privacy",
+      text: "We value your privacy and handle personal data in accordance with our Privacy Policy. By using our website, you consent to the collection and use of information as outlined therein.",
     },
     {
-      title: "Termination",
-      text: [
-        "We reserve the right to suspend or end your access to the platform at our discretion, with or without notice, if you violate these terms or any applicable laws.",
-      ],
+      title: "Changes to Terms",
+      text: "Y.E.S. Africa Foundation may update these Terms of Use at any time. Continued use of our website and services constitutes acceptance of any revised terms.",
     },
     {
       title: "Governing Law",
-      text: [
-        "These terms and conditions are governed by and interpreted in accordance with the laws of the United States of America.",
-      ],
-    },
-    {
-      title: "Contact Us",
-      text: [
-        "If you have any questions about these terms, please contact us via the support page or email listed in the Contact section.",
-      ],
+      text: "These Terms shall be governed by and construed in accordance with the laws applicable in our country of registration, without regard to conflict of law principles.",
     },
   ];
 
@@ -70,14 +43,12 @@ export default function Page() {
     <div className={styles.main}>
       <div className={styles.container}>
         <h1>Terms and Conditions</h1>
-        <h2>Last Updated: November 2024</h2>
+        <h2>Last Updated: September 2025</h2>
 
         {texts.map((e, i) => (
           <div key={i}>
             <h3>{e.title}</h3>
-            {e.text.map((k, j) => (
-              <p key={j}>{k}</p>
-            ))}
+            <p>{e.text}</p>
           </div>
         ))}
       </div>

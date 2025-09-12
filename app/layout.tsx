@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "YES Africa Foundation",
     images: [
       {
-        url: "/logo.png", // replace with your actual OG image path
+        url: "https://www.yesafricafoundation.com/logo.png",
         width: 1200,
         height: 630,
         alt: "YES Africa Foundation",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "YES Africa Foundation | Empowering African Youth",
     description:
       "YES Africa Foundation empowers African youths with education, entrepreneurship, mentorship, and skills acquisition programs.",
-    images: ["/logo.png"],
+    images: ["https://www.yesafricafoundation.com/logo.png"],
     creator: "@yesafricafoundation",
   },
   icons: {

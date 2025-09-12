@@ -12,7 +12,8 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { email, tel, purpose, amount: rawAmount, name, eventId } = body;
     let amount = rawAmount;
-    let details = { name, tel, purpose, amount, email: EMAIL };
+    if (amount <= 0) throw new Error();
+    let details = { name, tel, purpose, amount, email: email || EMAIL };
     if (eventId) {
       const now = new Date().getTime();
       const event = (await Event.findOne({
@@ -21,7 +22,19 @@ export async function POST(req: Request) {
       })) as EventResponseType;
 
       const attendees = await Attendee.find({ eventId });
-      if (attendees.length >= event.max)
+      const exists = attendees.find((e) => e.email == body.email);
+      if (exists) {
+        return new NextResponse(
+          JSON.stringify({
+            message: "You have already registered for this event",
+            url: "",
+          }),
+          {
+            status: 401,
+          }
+        );
+      }
+      if (attendees.length >= event.max || !event)
         return new NextResponse(
           JSON.stringify({
             message: "Registration closed!",
@@ -38,7 +51,7 @@ export async function POST(req: Request) {
       body.idNo = idNo;
       body.reference = idNo;
       const up = await new Attendee(body);
-      details = { ...up, amount };
+      details = { ...up._doc, amount };
     }
 
     const hashed = makePaymentToken(details);
@@ -52,6 +65,7 @@ export async function POST(req: Request) {
         ? 2000
         : amount * centage + 100
     );
+
     const { data } = await axios.post(
       `${process.env.PAYSTACK_URL}initialize`,
       {
@@ -76,7 +90,7 @@ export async function POST(req: Request) {
             {
               display_name: "Email",
               variable_name: "Email",
-              value: email,
+              value: details.email,
             },
           ],
         },
