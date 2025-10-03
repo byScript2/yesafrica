@@ -1,7 +1,9 @@
+import { COMPANYNAME } from "./config";
 import {
   AttendeeResponseType,
   EventResponseType,
   MailProp,
+  MemberResponseType,
   UserResponseType,
 } from "./dataTypes";
 
@@ -64,6 +66,26 @@ export const RegistrationMessage = (
             
 
            
+          </div>
+        `,
+      },
+    ],
+  };
+};
+export const MembershipMessage = (member: MemberResponseType): MailProp => {
+  return {
+    data: [
+      {
+        to: { email: member.email, name: member.name },
+
+        subject: `Welcome to ${COMPANYNAME}`,
+
+        htmlbody: `
+         <div>
+           <p>We’re excited to have you join <strong>YES Africa Foundation</strong> — a community dedicated to empowering and supporting young people across Africa.</p>
+
+          <p>Together, we’ll open doors to opportunities in entrepreneurship, leadership, digital skills, and more.</p>
+<p>Look out for our emails; we’ll keep you updated on what’s ahead.</p>
           </div>
         `,
       },

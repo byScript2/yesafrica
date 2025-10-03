@@ -87,6 +87,9 @@ const Nav: React.FC = () => {
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
         <div className={styles.desktop}>
           <div className={styles.top}>
+            <Link href={"/membership"}>
+              <span>Become a member</span>
+            </Link>
             {user?.email ? (
               <Link href={"/dashboard"}>
                 <RiAccountCircle2Line className={styles.icon} />
@@ -147,6 +150,9 @@ const Nav: React.FC = () => {
             }
           >
             <div className={styles.top}>
+              <Link href={"/membership"} style={{ color: "var(--a)" }}>
+                <span>Become a member</span>
+              </Link>
               {user?.email ? (
                 <Link href={"/dashboard"}>
                   <RiAccountCircle2Line className={styles.icon} />

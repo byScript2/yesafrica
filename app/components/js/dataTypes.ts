@@ -14,6 +14,13 @@ export interface UserResponseType extends EveryResponseType {
   password: string;
   tel: string;
 }
+export interface MemberResponseType extends EveryResponseType {
+  email: string;
+  name: string;
+  tel: string;
+  interests: string[];
+  avatar?: string;
+}
 export interface EventResponseType extends EveryResponseType {
   title: string;
   desc: string;

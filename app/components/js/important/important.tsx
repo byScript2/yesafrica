@@ -21,7 +21,7 @@ export default function ImportantLinks() {
 
     {
       text: "Donate",
-      link: "/donation",
+      link: "get_involved/donate",
     },
     {
       text: "Get Involved",

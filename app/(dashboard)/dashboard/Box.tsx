@@ -58,6 +58,10 @@ const Box: React.FC<{
       link: "/dashboard/media",
       name: "Media",
     },
+    {
+      link: "/dashboard/members",
+      name: "Members",
+    },
 
     {
       link: "/dashboard/donations",

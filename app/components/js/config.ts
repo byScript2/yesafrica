@@ -19,10 +19,11 @@ export const mediaUrl = `${baseUrl}media/`;
 export const attendeeUrl = `${baseUrl}attendee/`;
 export const mailerUrl = `${baseUrl}mailer/`;
 export const usersUrl = `${baseUrl}users/`;
+export const membersUrl = `${baseUrl}members/`;
 
 export const WEBLINK = `https://www.yesafricafoundation.com`;
 export const EMAIL = `info@yesafricafoundation.com`;
-export const TEL = `+2348033565682`;
+export const TEL = `+2349043878643`;
 export const TEL2 = `+2348033565682`;
 
 export const FILETYPES = ["IMAGE", "VIDEO"];
@@ -48,6 +49,6 @@ export const SOCIALS: { Icon: IconType; link: string }[] = [
   },
 ];
 
-export const HQ = `110 Emiscole Street, Iyana-Iba, Ojo, Lagos, Nigeria.`;
+export const HQ = `3B Sobo Arobiodun Street, GRA Ikeja, Lagos, Nigeria.`;
 
 export const ROLES = ["Organizer", "Participant", "Coordinator", "Crew"];

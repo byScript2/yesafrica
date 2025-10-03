@@ -14,6 +14,10 @@ export default function Page() {
       text: "Participation in our programmes, events, or initiatives is subject to eligibility requirements and the Foundation’s guidelines. We reserve the right to accept or decline applications at our discretion.",
     },
     {
+      title: "Consent to Recording and Media Use",
+      text: "By attending training sessions or programme-related activities, you hereby grant Y.E.S. Africa Foundation and its authorized partners the unrestricted right to: (1) record, photograph, and document your participation; (2) use your name, business name, logo, images, testimonials, videos, and any media content generated during the programme for internal reports, media releases, website features, social media posts, and other promotional activities; and (3) share success stories or outcomes from your business journey as part of the programme’s public impact communication. You understand that you will not be entitled to any compensation for the use of this content and that all materials will be used in line with the Foundation’s brand and communications standards.",
+    },
+    {
       title: "Donations",
       text: "Donations made to Y.E.S. Africa Foundation are voluntary and non-refundable. Funds will be allocated to support our mission, programmes, and operations in the best interest of our beneficiaries.",
     },

@@ -16,7 +16,7 @@ export default function Body() {
   const [oNames, setONames] = useState<string>("");
   const [tel, setTel] = useState<string>("");
   const [sName, setSName] = useState<string>("");
-  const [country, setCountry] = useState<string>("United States");
+  const [country, setCountry] = useState<string>("Nigeria");
 
   const [cPassword, setCPassword] = useState<string>("");
   const [check, setCheck] = useState<boolean>(false);

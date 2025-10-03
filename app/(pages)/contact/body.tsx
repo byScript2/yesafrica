@@ -4,7 +4,13 @@ import styles from "./styles.module.scss";
 import { Topper, TopperType } from "@/app/components/js/carousel/Carousel";
 
 import Spinner from "@/app/components/js/spinner/Spinner";
-import { COMPANYNAME, EMAIL, HQ, mailerUrl } from "@/app/components/js/config";
+import {
+  COMPANYNAME,
+  EMAIL,
+  HQ,
+  mailerUrl,
+  TEL,
+} from "@/app/components/js/config";
 import { MailProp } from "@/app/components/js/dataTypes";
 import { postRequest } from "@/app/components/js/api_client";
 import showMessage from "@/app/components/js/showError";
@@ -68,6 +74,10 @@ export default function Body() {
                 <div>
                   <h3>{`📧 Email`}</h3>
                   <p>{EMAIL}</p>
+                </div>
+                <div>
+                  <h3>{`📧 Whatsapp & Call`}</h3>
+                  <p>{TEL}</p>
                 </div>
                 <div>
                   <h3>{`🕒 Business Hours`}</h3>

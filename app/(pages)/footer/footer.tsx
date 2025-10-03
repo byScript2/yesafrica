@@ -12,6 +12,10 @@ interface Link {
 const Footer: React.FC = () => {
   const links: Link[] = [
     {
+      name: "Become a Member",
+      link: "/membership",
+    },
+    {
       name: "About Us",
       link: "/about",
     },

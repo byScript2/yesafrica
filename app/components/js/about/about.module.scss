@@ -26,6 +26,10 @@
     padding-bottom: 50px;
     gap: 30px;
     align-items: flex-start;
+    .actions {
+      display: flex;
+      gap: 20px;
+    }
   }
 }
 
@@ -42,6 +46,9 @@
       width: 100%;
       padding: 24px;
       margin: 0;
+      .actions {
+        flex-direction: column;
+      }
     }
   }
 }
