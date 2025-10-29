@@ -24,8 +24,14 @@
       label {
         display: none;
       }
-      > * {
-        width: 40% !important;
+      .filters {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 60%;
+        > * {
+          flex: 1;
+        }
       }
     }
     .grid {
@@ -68,13 +74,24 @@
     .right {
       flex-direction: column;
       gap: 50px;
-
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        .filters {
+          width: 100%;
+        }
+      }
       .grid {
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
         gap: 40px;
         width: 100%;
         .item {
+          width: 100%;
+          max-width: 100%;
           font-size: 0.8rem;
         }
       }

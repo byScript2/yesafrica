@@ -17,25 +17,25 @@ export default function Body() {
     link: string;
   }[] = [
     {
-      title: "Become a Volunteer",
+      title: "Volunteer",
       Icon: FaHandsHelping,
       text: "Join our network of passionate volunteers and contribute your time, skills, and energy to empower young people across Africa.",
       link: "/get_involved/volunteer",
     },
     {
-      title: "Sponsor a Youth Program",
+      title: "Sponsor a project",
       Icon: FaDonate,
       text: "Directly support youth through scholarships, training, and entrepreneurship programs that transform lives and communities.",
       link: "/get_involved/sponsor",
     },
     {
-      title: "Partner on a Project",
+      title: "Partner with us",
       Icon: FaHandshake,
       text: "Collaborate with us to amplify impact through joint initiatives, events, and programs that drive sustainable development.",
       link: "/get_involved/partner",
     },
     {
-      title: "Mentor Young People",
+      title: "Become a Mentor",
       Icon: FaUserFriends,
       text: "Guide and inspire the next generation of leaders by sharing your knowledge, experience, and expertise through mentorship.",
       link: "/get_involved/mentor",
@@ -50,7 +50,7 @@ export default function Body() {
 
   return (
     <div className={styles.main}>
-      <h2>Ways to get involved</h2>
+      <h2>Take Action Now</h2>
       <div className={styles.items} id="slide">
         {getInvolved.map((e, i) => (
           <div key={i} className={styles.item}>

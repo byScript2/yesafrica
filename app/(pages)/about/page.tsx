@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   const top: TopperType = {
-    title: "About Y.E.S. Africa Foundation",
+    title: "Y.E.S. Africa Foundation",
     text: [
       "Y.E.S. Africa Foundation is more than an NGO, we are a movement dedicated to unlocking the potential of Africa’s young people.",
       "Through education, entrepreneurship, mentorship, and skills acquisition, we empower youths to rise with purpose, passion, and impact.",

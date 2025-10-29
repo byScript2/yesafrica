@@ -115,6 +115,7 @@ export function SelectElement({
     >
       <label> {title}</label>
       <select value={value} onChange={(e) => setter(e.target.value)}>
+        <option value={""}>Select</option>
         {values.map((e, i) => (
           <option value={e.value} key={i}>
             {e.displayText}

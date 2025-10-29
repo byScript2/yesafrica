@@ -29,8 +29,8 @@ const Nav: React.FC = () => {
       link: "/about",
     },
     {
-      text: "What We Do",
-      link: "/what_we_do",
+      text: "Our programs",
+      link: "/programs",
     },
     {
       text: "Get Involved",

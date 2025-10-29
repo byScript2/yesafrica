@@ -18,9 +18,15 @@ export interface MemberResponseType extends EveryResponseType {
   email: string;
   name: string;
   tel: string;
+
+  country: string;
+  region: string;
+  gender: 0 | 1;
   interests: string[];
+  role: string;
   avatar?: string;
 }
+
 export interface EventResponseType extends EveryResponseType {
   title: string;
   desc: string;
@@ -54,11 +60,14 @@ export interface AttendeeResponseType extends EveryResponseType {
   email: string;
   name: string;
   eventId: string;
-  role: string;
+  promote: boolean;
   tel: string;
-  image: string;
   idNo: string;
+  country: string;
+  region: string;
+  gender: 0 | 1;
   reference: string;
+
   event: EventResponseType;
 }
 export interface DonationResponseType extends EveryResponseType {

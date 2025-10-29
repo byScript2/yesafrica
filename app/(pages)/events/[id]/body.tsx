@@ -2,10 +2,10 @@
 import { EventResponseType } from "@/app/components/js/dataTypes";
 import styles from "../styles.module.scss";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "@/app/components/js/spinner/Spinner";
 import { postRequest } from "@/app/components/js/api_client";
-import { attendeeUrl, paymentUrl } from "@/app/components/js/config";
+import { attendeeUrl, Genders, paymentUrl } from "@/app/components/js/config";
 import showMessage from "@/app/components/js/showError";
 import { uploadFile } from "@/app/components/js/firebaseconfig";
 import {
@@ -13,14 +13,22 @@ import {
   InputElement,
   SelectElement,
 } from "@/app/(dashboard)/dashboard/(main)/utilities";
+import { CountriesStates } from "@/app/components/js/countries";
 
 export default function Body({ data }: { data: EventResponseType }) {
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
-  const roles = ["Participant", "Camera Crew", "Security", "Coordinator"];
-  const [role, setRole] = useState(roles[0]);
+  const [gender, setGender] = useState<string>("1");
+  const [region, setRegion] = useState<string>("");
+  const [country, setCountry] = useState<string>("Nigeria");
+  const [regions, setRegions] = useState<string[]>([]);
+  const [promote, setPromote] = useState(false);
+  useEffect(() => {
+    const region = CountriesStates.find((e) => e.name == country);
+    setRegions(() => region?.states || []);
+  }, [country]);
   function dateString(e: number) {
     const date = new Date(e);
     return date.toLocaleString("en-GB", {
@@ -34,11 +42,7 @@ export default function Body({ data }: { data: EventResponseType }) {
   }
   const handleSubmit = async () => {
     setMessage("Please wait");
-    const images = await uploadFile(`attendant/${data.title}/${name}`, "form");
-    if (images.length == 0) {
-      showMessage(setMessage, "Please upload your photo");
-      return;
-    }
+
     const {
       success,
       message,
@@ -46,11 +50,14 @@ export default function Body({ data }: { data: EventResponseType }) {
     } = await postRequest(data.fee > 0 ? paymentUrl : attendeeUrl, {
       email,
       name,
-      role,
+      country,
+      region: region || "Nil",
+      gender: gender == "1" ? 1 : 0,
       tel,
-      image: images[0],
+
       eventId: data._id,
       amount: data.fee,
+      promote,
     });
     showMessage(
       setMessage,
@@ -113,6 +120,16 @@ export default function Body({ data }: { data: EventResponseType }) {
               title="Email"
             />
             <InputElement setter={setName} value={name} title="Full Name" />
+
+            <SelectElement
+              setter={setGender}
+              value={gender}
+              values={Genders.map((e) => ({
+                displayText: e.text,
+                value: e.value.toString(),
+              }))}
+              title="Gender"
+            />
             <InputElement
               setter={setTel}
               value={tel}
@@ -120,14 +137,19 @@ export default function Body({ data }: { data: EventResponseType }) {
               title="Phone Number"
             />
             <SelectElement
-              setter={setRole}
-              value={role}
-              values={roles.map((e) => ({ displayText: e, value: e }))}
-              title="Role"
+              setter={setCountry}
+              value={country}
+              values={CountriesStates.map((e) => ({
+                displayText: e.name,
+                value: e.name,
+              }))}
+              title="Country"
             />
-            <ImageElement
-              title="Upload your picture"
-              showError={(e) => showMessage(setMessage, e)}
+            <SelectElement
+              setter={setRegion}
+              value={region}
+              values={regions.map((e) => ({ displayText: e, value: e }))}
+              title="Region"
             />
 
             <button className="action" disabled={!email || !tel || !name}>

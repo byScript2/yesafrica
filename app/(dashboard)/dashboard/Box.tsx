@@ -28,8 +28,8 @@ const Box: React.FC<{
   const logout = context?.logout;
   const adminLinks: LinkProp[] = [
     {
-      name: "Users",
-      link: "/dashboard/users",
+      link: "/dashboard/members",
+      name: "Members",
       icon: HiOutlineUsers,
     },
     {
@@ -57,10 +57,6 @@ const Box: React.FC<{
     {
       link: "/dashboard/media",
       name: "Media",
-    },
-    {
-      link: "/dashboard/members",
-      name: "Members",
     },
 
     {

@@ -8,14 +8,14 @@ import Link from "next/link";
 export default function Body() {
   const whatWeDo: { title: string; image: string; text: string }[] = [
     {
-      title: "Entrepreneurship Bootcamps",
+      title: "Entrepreneurship Development",
       image: "/assets/entrepreneurship.jpg",
-      text: "We train and mentor aspiring young entrepreneurs with the business knowledge, tools, and funding support they need to launch and scale their ventures.",
+      text: "We train and mentor aspiring young entrepreneurs with the business knowledge, tools, and funding support they need to launch and scale up their ventures.",
     },
     {
-      title: "Skill Acquisition & Vocational Training",
-      image: "/assets/makeup.png",
-      text: "From tech skills like coding and digital marketing to practical vocations like tailoring, baking, and photography — we offer hands-on training for job creation and self-reliance.",
+      title: "Vocational Training",
+      image: "/assets/tech.png",
+      text: "We provide practical, hands-on training in a variety of fields, including technology skills such as coding and digital marketing, as well as creative trades like tailoring, baking, and photography. Our goal is to equip individuals with the skills needed for job creation and self-reliance.",
     },
     {
       title: "Mentorship & Leadership Development",
@@ -25,7 +25,7 @@ export default function Body() {
     {
       title: "Scholarship & Academic Support",
       image: "/assets/graduate.jpg",
-      text: "We provide scholarships, learning materials, and career guidance to support underprivileged youth in their educational journey.",
+      text: "We provide scholarships, learning materials, and career guidance to support youth across the continent in their educational journey.",
     },
     {
       title: "Community Outreach & Volunteering",
@@ -63,9 +63,9 @@ export default function Body() {
       </div>
 
       <div className={styles.involved}>
-        <h1>Be a Part of the Change</h1>
+        <h1>Take Action Now</h1>
         <p>
-          {`At YES Africa Foundation, we believe that youth empowerment is not a one-man job — it is a
+          {`We believe that youth empowerment is a
 collective mission. Whether you're an individual, organization, or institution, there’s a role for you in
 shaping the next generation of leaders, innovators, and changemakers.`}{" "}
         </p>
@@ -74,7 +74,7 @@ shaping the next generation of leaders, innovators, and changemakers.`}{" "}
           <Link href={"/get_involved/donate"} className="color">
             donate
           </Link>
-          {`, you help us reach more young people with skills training, mentorship, and access to
+          {`, you help us reach more young people with skills aquisition, mentorship, and access to
 life-changing opportunities.`}
         </p>
         <p>

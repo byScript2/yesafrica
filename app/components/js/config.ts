@@ -30,6 +30,18 @@ export const FILETYPES = ["IMAGE", "VIDEO"];
 export const FILESOURCES = ["SITE", "YOUTUBE", "OTHERS"];
 export const FILEORIENTATIONS = ["SQUARE", "PORTRAIT", "LANDSCAPE"];
 export const MaxFileSize = 2 * 1024 * 1024;
+
+export const Genders: { value: number; text: string }[] = [
+  {
+    value: 0,
+    text: "Female",
+  },
+  {
+    value: 1,
+    text: "Male",
+  },
+];
+
 export const SOCIALS: { Icon: IconType; link: string }[] = [
   {
     Icon: FaInstagram,

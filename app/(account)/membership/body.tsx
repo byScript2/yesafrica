@@ -1,13 +1,14 @@
 "use client";
 
 import { postRequest } from "@/app/components/js/api_client";
-import { membersUrl } from "@/app/components/js/config";
+import { Genders, membersUrl } from "@/app/components/js/config";
+import { CountriesStates } from "@/app/components/js/countries";
 
 import showError from "@/app/components/js/showError";
 import Spinner from "@/app/components/js/spinner/Spinner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Body() {
   const router = useRouter();
@@ -15,6 +16,10 @@ export default function Body() {
 
   const [name, setName] = useState<string>("");
   const [tel, setTel] = useState<string>("");
+  const [gender, setGender] = useState<string>("1");
+  const [region, setRegion] = useState<string>("");
+  const [country, setCountry] = useState<string>("Nigeria");
+  const [regions, setRegions] = useState<string[]>([]);
 
   const [check, setCheck] = useState<boolean>(false);
 
@@ -31,6 +36,9 @@ export default function Body() {
       name,
       email,
       interests,
+      country,
+      region: region || "Nil",
+      gender: gender == "1" ? 1 : 0,
       tel,
     });
     if (!success) {
@@ -42,16 +50,27 @@ export default function Body() {
       router.push("/about");
     }, 2000);
   };
+
+  useEffect(() => {
+    const region = CountriesStates.find((e) => e.name == country);
+    setRegions(() => region?.states || []);
+  }, [country]);
+
   return (
     <div>
-      <h1>Membership form</h1>
+      <h1>Become a member</h1>
+
+      <p>
+        Join the Y.E.S Africa network and receive updates and oppurtunities for
+        leadership development, mentorship and empowerment.
+      </p>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handle();
         }}
       >
-        <label>Your Name</label>
+        <label>Name</label>
         <input
           required
           type="text"
@@ -75,6 +94,8 @@ export default function Body() {
           placeholder="someone@gmail.com"
         />
         <label>Phone number</label>
+        <span style={{ color: "red" }}>Kindly indicate your country code</span>
+
         <input
           required
           type="tel"
@@ -83,8 +104,34 @@ export default function Body() {
           }}
           value={tel}
           name="tel"
-          placeholder="+234"
         />
+        <label>Gender</label>
+        <select onChange={(e) => setGender(e.target.value)} value={gender}>
+          {Genders.map((e, i) => (
+            <option key={i} value={e.value}>
+              {e.text}
+            </option>
+          ))}
+        </select>
+        <label>Country</label>
+        <select onChange={(e) => setCountry(e.target.value)} value={country}>
+          <option value="">Select</option>
+          {CountriesStates.map((e, i) => (
+            <option key={i} value={e.name}>
+              {e.name}
+            </option>
+          ))}
+        </select>
+        <label>{`Region`}</label>
+        <select onChange={(e) => setRegion(e.target.value)} value={region}>
+          <option value="">Select</option>
+          {regions.map((e, i) => (
+            <option key={i} value={e}>
+              {e}
+            </option>
+          ))}
+        </select>
+
         <label>Areas of interests</label>
         <div className="interests">
           {[

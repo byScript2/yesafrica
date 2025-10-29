@@ -30,13 +30,23 @@ const attendee = new mongoose.Schema<AttendeeResponseType>(
       type: String,
       required: true,
     },
-    image: {
+
+    promote: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+    region: {
       type: String,
       required: true,
     },
-    role: {
+    country: {
       type: String,
-
+      required: true,
+    },
+    gender: {
+      type: Number,
+      enum: [1, 0],
       required: true,
     },
   },

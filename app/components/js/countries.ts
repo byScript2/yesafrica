@@ -21233,6 +21233,12 @@ export const Countries: string[] = countries.map((country) => {
   const name = country.name;
   return name;
 });
+export const CountriesStates = countries.map((country) => {
+  const name = country.name;
+  const states = country.states.map((e) => e.name);
+  return { name, states };
+});
+
 // export const allStates = (countryName: string): StateType[] => {
 //   const avalableStates: CountryType[] = countryState.filter(
 //     (country) => country.name === countryName
