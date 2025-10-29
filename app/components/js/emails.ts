@@ -57,7 +57,7 @@ export const RegistrationMessage = (
             <ul style="padding-left: 20px;">
               <li><strong>Event:</strong> ${event.title}</li>
               <li><strong>Date:</strong> ${eventDate}</li>
-              <li><strong>Role:</strong> ${attendee.role}</li>
+
               <li><strong>Id No:</strong> ${attendee.idNo}</li>
             </ul>
             
