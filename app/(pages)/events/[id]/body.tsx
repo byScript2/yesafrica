@@ -7,9 +7,8 @@ import Spinner from "@/app/components/js/spinner/Spinner";
 import { postRequest } from "@/app/components/js/api_client";
 import { attendeeUrl, Genders, paymentUrl } from "@/app/components/js/config";
 import showMessage from "@/app/components/js/showError";
-import { uploadFile } from "@/app/components/js/firebaseconfig";
+
 import {
-  ImageElement,
   InputElement,
   SelectElement,
 } from "@/app/(dashboard)/dashboard/(main)/utilities";
@@ -24,7 +23,7 @@ export default function Body({ data }: { data: EventResponseType }) {
   const [region, setRegion] = useState<string>("");
   const [country, setCountry] = useState<string>("Nigeria");
   const [regions, setRegions] = useState<string[]>([]);
-  const [promote, setPromote] = useState(false);
+  const [promote, setPromote] = useState("false");
   useEffect(() => {
     const region = CountriesStates.find((e) => e.name == country);
     setRegions(() => region?.states || []);
@@ -57,7 +56,7 @@ export default function Body({ data }: { data: EventResponseType }) {
 
       eventId: data._id,
       amount: data.fee,
-      promote,
+      promote: promote == "true",
     });
     showMessage(
       setMessage,
@@ -151,7 +150,18 @@ export default function Body({ data }: { data: EventResponseType }) {
               values={regions.map((e) => ({ displayText: e, value: e }))}
               title="Region"
             />
-
+            <SelectElement
+              setter={setPromote}
+              value={promote}
+              values={[
+                { text: "Yes", value: "true" },
+                { text: "No", value: "false" },
+              ].map((e) => ({
+                displayText: e.text,
+                value: e.value,
+              }))}
+              title="Do you want to showcase your business at the event?"
+            />
             <button className="action" disabled={!email || !tel || !name}>
               Register
             </button>
@@ -173,8 +183,10 @@ export default function Body({ data }: { data: EventResponseType }) {
 function Text({ name, value }: { name: string; value: string }) {
   return (
     <div className={styles.row}>
-      <span className={styles.title}>{`${name} : `}</span>
-      <span>{value}</span>
+      <span>
+        <b>{`${name} : `}</b>
+        {value}
+      </span>
     </div>
   );
 }

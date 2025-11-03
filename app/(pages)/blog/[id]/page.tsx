@@ -30,14 +30,30 @@ export async function generateMetadata(
     openGraph: {
       title: `${data.title} | ${COMPANYNAME}`,
       description: data.desc,
-      images: [data.banner, ...previousImages],
+      images: [
+        {
+          url: data.banner,
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+
+        ...previousImages,
+      ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: `${data.title} | ${COMPANYNAME}`,
       description: data.desc,
-      images: [data.banner],
+      images: [
+        {
+          url: data.banner,
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+      ],
     },
   };
 }
