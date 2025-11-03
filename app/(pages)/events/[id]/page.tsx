@@ -30,7 +30,7 @@ export async function generateMetadata(
     openGraph: {
       title: `${data.title} | ${COMPANYNAME}`,
       description: data.desc,
-      url: WEBLINK,
+      url: `${WEBLINK}/events/${data._id}`,
       images: [{ url: data.banner }],
       type: "website",
     },
