@@ -15,23 +15,23 @@ const Carousel: React.FC = () => {
   }[] = [
     {
       title: "Youths Empowered",
-      value: 50,
-      initial: ">126",
+      value: 18,
+      initial: ">1",
     },
     {
       title: "Skills Training & Bootcamps",
-      value: 50,
-      initial: ">3",
+      value: 8,
+      initial: ">",
     },
     {
       title: "Active Volunteers",
-      value: 60,
+      value: 17,
       initial: ">",
     },
 
     {
       title: "Communities Reached",
-      value: 45,
+      value: 9,
       initial: ">",
     },
   ];
@@ -40,7 +40,7 @@ const Carousel: React.FC = () => {
       id: e.title.split(" ")[0],
       qty: e.value,
       time: e.value > 100 ? e.value * 0.1 : e.value,
-    }))
+    })),
   );
   return (
     <div className={styles.cont}>

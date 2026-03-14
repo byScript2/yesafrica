@@ -18,7 +18,6 @@ export interface MemberResponseType extends EveryResponseType {
   email: string;
   name: string;
   tel: string;
-
   country: string;
   region: string;
   gender: 0 | 1;
@@ -31,6 +30,7 @@ export interface EventResponseType extends EveryResponseType {
   title: string;
   desc: string;
   date: number;
+  regLink: string;
   regCloseDate: number;
   banner: string;
   images: string[];

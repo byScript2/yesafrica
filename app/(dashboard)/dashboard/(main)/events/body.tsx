@@ -22,6 +22,7 @@ export default function Body({ data }: { data: EventResponseType[] }) {
   const user = context?.user;
 
   const [message, setMessage] = useState<string>("");
+  const [regLink, setRegLink] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
   const [body, setBody] = useState<string>("");
@@ -57,8 +58,9 @@ export default function Body({ data }: { data: EventResponseType[] }) {
         regCloseDate: stringDate(regCloseDate),
         fee: parseFloat(fee),
         max: parseInt(max),
+        regLink,
       },
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -74,7 +76,7 @@ export default function Body({ data }: { data: EventResponseType[] }) {
       `${eventUrl}${id}`,
       { hidden: true },
 
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -120,6 +122,12 @@ export default function Body({ data }: { data: EventResponseType[] }) {
             setter={setMax}
             title="Maximum Attendants"
             type={"number"}
+          />
+          <InputElement
+            value={regLink}
+            setter={setRegLink}
+            title="Registration Link"
+            type={"text"}
           />
 
           <label>Body</label>

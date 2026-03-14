@@ -36,10 +36,11 @@ export default function Body({ data }: { data: EventResponseType }) {
   const [message, setMessage] = useState<string>("");
   const [title, setTitle] = useState<string>(data.title);
   const [desc, setDesc] = useState<string>(data.desc);
+  const [regLink, setRegLink] = useState<string>(data.regLink || "");
   const [body, setBody] = useState<string>(data.body);
   const [date, setDate] = useState<string>(toDateTimeLocal(data.date));
   const [regCloseDate, setRegCloseDate] = useState<string>(
-    toDateTimeLocal(data.regCloseDate)
+    toDateTimeLocal(data.regCloseDate),
   );
   const [max, setMax] = useState<string>(data.max.toString());
   const [fee, setFee] = useState<string>(data.fee.toString());
@@ -69,12 +70,13 @@ export default function Body({ data }: { data: EventResponseType }) {
         regCloseDate: stringDate(regCloseDate),
         fee: parseFloat(fee),
         max: parseInt(max),
+        regLink,
       },
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
-      router.refresh();
+      router.back();
     } else {
       displayMessage(message);
     }
@@ -86,7 +88,7 @@ export default function Body({ data }: { data: EventResponseType }) {
       `${eventUrl}${data._id}`,
       { hidden: true },
 
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -136,7 +138,12 @@ export default function Body({ data }: { data: EventResponseType }) {
             title="Maximum Attendants"
             type={"number"}
           />
-
+          <InputElement
+            value={regLink}
+            setter={setRegLink}
+            title="Registration Link"
+            type={"text"}
+          />
           <label>Body</label>
           <Quill value={body} setValue={setBody} />
           <div id="title">

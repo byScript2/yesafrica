@@ -8,7 +8,7 @@ export default function AboutSection() {
   return (
     <div className={styles.about}>
       <div className={styles.image}>
-        <Image src={"/assets/makeup.png"} fill alt="" />
+        <Image src={"/assets/purpose.png"} fill alt="" />
       </div>
       <div className={styles.text}>
         <div className={styles.heading}>

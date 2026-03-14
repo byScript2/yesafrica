@@ -64,7 +64,7 @@ export default function Body({ data }: { data: EventResponseType }) {
         ? data.fee > 0
           ? "Redirecting..."
           : "Registration confirmed"
-        : message
+        : message,
     );
     if (dt && data.fee > 0) window.location.assign(dt.url);
     else if (dt) {
@@ -104,68 +104,74 @@ export default function Body({ data }: { data: EventResponseType }) {
           />
         </div>
         <div className={styles.right}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
-            id="form"
-          >
-            <h1>Register</h1>
-            <InputElement
-              setter={setEmail}
-              value={email}
-              type="email"
-              title="Email"
-            />
-            <InputElement setter={setName} value={name} title="Full Name" />
+          {data.regLink ? (
+            <iframe src={data.regLink} width="100%" height="700px">
+              Fill here
+            </iframe>
+          ) : (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+              id="form"
+            >
+              <h1>Register</h1>
+              <InputElement
+                setter={setEmail}
+                value={email}
+                type="email"
+                title="Email"
+              />
+              <InputElement setter={setName} value={name} title="Full Name" />
 
-            <SelectElement
-              setter={setGender}
-              value={gender}
-              values={Genders.map((e) => ({
-                displayText: e.text,
-                value: e.value.toString(),
-              }))}
-              title="Gender"
-            />
-            <InputElement
-              setter={setTel}
-              value={tel}
-              type="number"
-              title="Phone Number"
-            />
-            <SelectElement
-              setter={setCountry}
-              value={country}
-              values={CountriesStates.map((e) => ({
-                displayText: e.name,
-                value: e.name,
-              }))}
-              title="Country"
-            />
-            <SelectElement
-              setter={setRegion}
-              value={region}
-              values={regions.map((e) => ({ displayText: e, value: e }))}
-              title="Region"
-            />
-            <SelectElement
-              setter={setPromote}
-              value={promote}
-              values={[
-                { text: "Yes", value: "true" },
-                { text: "No", value: "false" },
-              ].map((e) => ({
-                displayText: e.text,
-                value: e.value,
-              }))}
-              title="Do you want to showcase your business at the event?"
-            />
-            <button className="action" disabled={!email || !tel || !name}>
-              Register
-            </button>
-          </form>
+              <SelectElement
+                setter={setGender}
+                value={gender}
+                values={Genders.map((e) => ({
+                  displayText: e.text,
+                  value: e.value.toString(),
+                }))}
+                title="Gender"
+              />
+              <InputElement
+                setter={setTel}
+                value={tel}
+                type="number"
+                title="Phone Number"
+              />
+              <SelectElement
+                setter={setCountry}
+                value={country}
+                values={CountriesStates.map((e) => ({
+                  displayText: e.name,
+                  value: e.name,
+                }))}
+                title="Country"
+              />
+              <SelectElement
+                setter={setRegion}
+                value={region}
+                values={regions.map((e) => ({ displayText: e, value: e }))}
+                title="Region"
+              />
+              <SelectElement
+                setter={setPromote}
+                value={promote}
+                values={[
+                  { text: "Yes", value: "true" },
+                  { text: "No", value: "false" },
+                ].map((e) => ({
+                  displayText: e.text,
+                  value: e.value,
+                }))}
+                title="Do you want to showcase your business at the event?"
+              />
+              <button className="action" disabled={!email || !tel || !name}>
+                Register
+              </button>
+            </form>
+          )}
         </div>
       </div>
       <div className={styles.images}>

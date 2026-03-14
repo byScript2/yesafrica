@@ -20,6 +20,9 @@ const event = new mongoose.Schema<EventResponseType>(
       type: String,
       required: true,
     },
+    regLink: {
+      type: String,
+    },
 
     images: {
       type: [String],
@@ -46,7 +49,7 @@ const event = new mongoose.Schema<EventResponseType>(
       default: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Event = mongoose.models.Event || mongoose.model("Event", event);

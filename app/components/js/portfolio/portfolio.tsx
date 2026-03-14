@@ -12,16 +12,16 @@ export default function Portfolio() {
     id: string;
   }[] = [
     {
-      title: "Education & Research",
+      title: "Bridging Knowledge Gaps",
       text: [
         "We equip young people with access to quality education, scholarships, digital literacy, and mentorship. By bridging the knowledge gap, we prepare the next generation of innovators, leaders, and problem-solvers to thrive in a fast-changing world.",
         "Our goal is to create equal opportunities for learning, ensuring that no youth is left behind due to socio-economic limitations.",
       ],
-      img: "/assets/graduate.jpg",
+      img: "/assets/group.png",
       id: "education",
     },
     {
-      title: "Entrepreneurship & Business",
+      title: "Nurturing Ideas to Impact",
       text: [
         "We believe in the power of enterprise to change lives. Through startup incubation, business training, and financial literacy programmes, we help young entrepreneurs transform ideas into thriving businesses that create jobs and drive economic growth.",
         "By connecting youths with mentors and investors, we nurture bold thinkers who will shape Africa’s economic future.",
@@ -30,7 +30,7 @@ export default function Portfolio() {
       id: "entrepreneurship",
     },
     {
-      title: "Technology & Innovation",
+      title: "Innovation Driven Approach",
       text: [
         "Technology is the backbone of the future, and we ensure young people are not left behind. From coding bootcamps to Web3 and AI awareness, we empower youths to harness innovation, solve problems creatively, and compete globally in the digital economy.",
         "We encourage innovation challenges and hackathons that spark creativity and position African youths as global contributors in tech.",
@@ -49,7 +49,7 @@ export default function Portfolio() {
     },
 
     {
-      title: "Health & Wellbeing",
+      title: "Building Healthy Communities",
       text: [
         "A strong mind and body are essential for a thriving generation. We support health awareness, mental wellbeing initiatives, and career opportunities in healthcare, ensuring young people are fit, confident, and capable of building the Africa of tomorrow.",
         "From community outreach programmes to skills training in health-related fields, we are committed to creating healthier societies.",
