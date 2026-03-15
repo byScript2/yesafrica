@@ -158,6 +158,9 @@
       height: 40vh;
       max-width: 33%;
       flex: 1;
+      img {
+        object-fit: contain;
+      }
     }
   }
 }

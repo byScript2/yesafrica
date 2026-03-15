@@ -1,0 +1,258 @@
+@use "../../../utilities.module" as *;
+
+// ─── Carousel ─────────────────────────────────────────
+.carousel {
+  position: relative;
+
+  width: 100%;
+  height: 580px;
+  overflow: hidden;
+  background-color: #f0ece6;
+
+  @media (max-width: 768px) {
+    height: 750px;
+  }
+}
+
+// ─── Track ───────────────────────────────────────────
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+// ─── Slide ───────────────────────────────────────────
+.slide {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1.03);
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    z-index: 2;
+  }
+
+  &.prev {
+    opacity: 0;
+    transform: scale(0.98) translateX(-2%);
+    z-index: 1;
+  }
+
+  &.next {
+    opacity: 0;
+    transform: scale(0.98) translateX(2%);
+    z-index: 1;
+  }
+}
+
+// ─── Image ───────────────────────────────────────────
+.imageWrap {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 40%;
+    background-color: $p;
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+// ─── Slide Content ───────────────────────────────────
+.slideContent {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 50px;
+  padding-right: 100px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+    padding: 25px;
+  }
+}
+
+.slideName {
+  font-family: var(--special);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 300;
+  color: $p;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.slideText {
+  font-size: 1rem;
+  font-weight: 300;
+  color: $b;
+}
+
+.slideLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $a;
+  margin-top: 0.5rem;
+  transition:
+    gap 0.25s ease,
+    color 0.25s ease;
+
+  &::after {
+    content: "→";
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    color: $p;
+    gap: 0.75rem;
+
+    &::after {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// ─── Arrows ──────────────────────────────────────────
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: rgba($p, 0.9);
+  border: 1px solid rgba($w, 0.2);
+  color: $w;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition:
+    background-color 0.25s ease,
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+  @media (max-width: 768px) {
+    top: 40%;
+  }
+
+  &Hide {
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: $w;
+    border-color: $p;
+    color: $a;
+  }
+
+  &Left {
+    left: 1.5rem;
+
+    @media (max-width: 768px) {
+      left: 1rem;
+    }
+  }
+
+  &Right {
+    right: 1.5rem;
+
+    @media (max-width: 768px) {
+      right: 1rem;
+    }
+  }
+}
+
+// ─── Dots ────────────────────────────────────────────
+.dots {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $p;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    width 0.3s ease;
+
+  &Active {
+    background-color: $a;
+    width: 20px;
+    border-radius: 3px;
+  }
+}
+
+// ─── Progress Bar ────────────────────────────────────
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba($w, 0.1);
+  z-index: 5;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: $p;
+  width: 0%;
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
