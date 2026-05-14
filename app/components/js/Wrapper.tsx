@@ -32,7 +32,7 @@ export default function Wrap({ children }: Props) {
     document.cookie = "token=; path=/login";
     document.cookie = "token=; path=/signup";
     setUser(() => null);
-    location.reload();
+    location.replace("/login");
   };
 
   const logIn = (user: UserResponseType) => {
@@ -75,7 +75,7 @@ export default function Wrap({ children }: Props) {
             {
               token: bearerToken,
             },
-            bearerToken
+            bearerToken,
           );
 
           setUser(data);

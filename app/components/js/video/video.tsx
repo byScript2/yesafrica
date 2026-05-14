@@ -31,7 +31,7 @@ export default function GoogleVideoCase({
     };
     const observer: IntersectionObserver = new IntersectionObserver(
       callback,
-      options
+      options,
     );
     if (video) observer.observe(video);
   }, [src]);
@@ -46,8 +46,8 @@ export default function GoogleVideoCase({
           orientation == "LANDSCAPE"
             ? styles.landscape
             : orientation == "PORTRAIT"
-            ? styles.portrait
-            : ""
+              ? styles.portrait
+              : ""
         }`}
         src={""}
         aria-describedby={src}
@@ -82,13 +82,15 @@ export function YoutubeVideoCase({
         if (entry.isIntersecting) {
           const target = entry.target as HTMLVideoElement;
           target.src = src;
+          console.log(src);
+
           observer.unobserve(entry.target);
         }
       });
     };
     const observer: IntersectionObserver = new IntersectionObserver(
       callback,
-      options
+      options,
     );
     if (video) observer.observe(video);
   }, [src]);
@@ -103,8 +105,8 @@ export function YoutubeVideoCase({
           orientation == "LANDSCAPE"
             ? styles.landscape
             : orientation == "PORTRAIT"
-            ? styles.portrait
-            : ""
+              ? styles.portrait
+              : ""
         }`}
         src={""}
         aria-describedby={src}
@@ -140,8 +142,8 @@ export function ImageCase({
           orientation == "LANDSCAPE"
             ? styles.landscape
             : orientation == "PORTRAIT"
-            ? styles.portrait
-            : ""
+              ? styles.portrait
+              : ""
         }`}
       >
         <Image src={src} alt={""} fill />
@@ -175,7 +177,7 @@ export function VideoCase2({
     };
     const observer: IntersectionObserver = new IntersectionObserver(
       callback,
-      options
+      options,
     );
     if (video) observer.observe(video);
   }, [src]);

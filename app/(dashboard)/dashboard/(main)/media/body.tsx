@@ -12,6 +12,7 @@ import {
   FILEORIENTATIONS,
   FILESOURCES,
   FILETYPES,
+  MaxFileSize,
   mediaUrl,
 } from "@/app/components/js/config";
 import { uploadFile } from "@/app/components/js/firebaseconfig";
@@ -36,7 +37,7 @@ export function Body({ media }: { media: MediaResponseType[] }) {
   const [src, setSrc] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
   const [fileType, setFileType] = useState<string>(FILETYPES[0]);
-  const [source, setSource] = useState<string>(FILESOURCES[0]);
+  const [source, setSource] = useState<string>(FILESOURCES[1]);
   const [orientation, setOrientation] = useState<string>(FILEORIENTATIONS[0]);
   const [format, setFormat] = useState<string>(FILETYPES[0]);
   const router = useRouter();
@@ -48,22 +49,32 @@ export function Body({ media }: { media: MediaResponseType[] }) {
     setMessage("Please wait...");
 
     let url = fileType == "IMAGE" ? "" : src;
+    const images: string[] = [];
     if (!url) {
-      const images = await uploadFile(`media/${title}`, "form");
-      url = images[0];
+      const imgs = await uploadFile(`media/${title}`, "form");
+      images.push(...imgs);
     }
-
+    const body = url
+      ? {
+          title,
+          desc,
+          orientation,
+          source,
+          src: url,
+          type: fileType,
+        }
+      : images.map((e) => ({
+          title,
+          desc,
+          orientation,
+          source,
+          src: e,
+          type: fileType,
+        }));
     const { success, message } = await postRequest(
       mediaUrl,
-      {
-        title,
-        desc,
-        orientation,
-        source,
-        src: url,
-        type: fileType,
-      },
-      `${user?.token}`
+      body,
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -78,7 +89,7 @@ export function Body({ media }: { media: MediaResponseType[] }) {
     const { success, message } = await deleteRequest(
       `${mediaUrl}${id}`,
 
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -117,7 +128,39 @@ export function Body({ media }: { media: MediaResponseType[] }) {
             />
           )}
           {fileType == "IMAGE" ? (
-            <ImageElement title="Upload Image" showError={displayMessage} />
+            <div id="elements" className={styles.imgcol}>
+              <ImageElement title="Upload Image" showError={displayMessage} />
+              <span
+                onClick={(e) => {
+                  const parent = document.getElementById(
+                    "elements",
+                  ) as HTMLDivElement;
+
+                  const input = document.createElement(
+                    "input",
+                  ) as HTMLInputElement;
+                  input.type = "file";
+                  input.accept = "image/*";
+                  input.onchange = (e) => {
+                    const targ = e.target as HTMLInputElement;
+                    const file = targ.files?.[0];
+                    if (file) {
+                      if (file.size > MaxFileSize) {
+                        displayMessage(
+                          "File size must be less than or equal to 2MB.",
+                        );
+                        targ.value = "";
+                        return;
+                      }
+                    }
+                  };
+                  parent.append(input);
+                }}
+                className={styles.key}
+              >
+                Add More
+              </span>
+            </div>
           ) : (
             <InputElement value={src} setter={setSrc} title="File Link" />
           )}

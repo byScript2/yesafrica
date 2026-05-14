@@ -2,7 +2,7 @@
 
 import styles from "../styles.module.scss";
 import { useUserContext } from "@/app/components/js/Wrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteRequest, putRequest } from "@/app/components/js/api_client";
 import showMessage from "@/app/components/js/showError";
 
@@ -11,7 +11,7 @@ import { BlogResponseType } from "@/app/components/js/dataTypes";
 import { blogUrl } from "@/app/components/js/config";
 
 import { useRouter } from "next/navigation";
-import { ImageElement, TextareaElement } from "../../utilities";
+import { ImageElement, InputElement, TextareaElement } from "../../utilities";
 
 import { uploadFile } from "@/app/components/js/firebaseconfig";
 import Quill from "@/app/components/js/quill/quill";
@@ -25,8 +25,14 @@ export default function Body({ data }: { data: BlogResponseType }) {
   const [title, setTitle] = useState<string>(data.title);
   const [desc, setDesc] = useState<string>(data.desc);
   const [body, setBody] = useState<string>(data.body);
-
+  const [vid, setVid] = useState("");
   const router = useRouter();
+  useEffect(() => {
+    const found = data.images.find((e) => e.includes("youtu"));
+    if (found) {
+      setVid(found);
+    }
+  }, [data]);
   function displayMessage(message: string) {
     showMessage(setMessage, message);
   }
@@ -35,6 +41,7 @@ export default function Body({ data }: { data: BlogResponseType }) {
     setMessage("Please wait...");
     const images1 = await uploadFile(`${title} title`, "title");
     const images = await uploadFile(`${title} images`, "images");
+    if (vid) images.push(vid);
     const { success, message } = await putRequest(
       `${blogUrl}${data._id}`,
       {
@@ -44,7 +51,7 @@ export default function Body({ data }: { data: BlogResponseType }) {
         banner: images1[0],
         images,
       },
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -59,7 +66,7 @@ export default function Body({ data }: { data: BlogResponseType }) {
     const { success, message } = await deleteRequest(
       `${blogUrl}${data._id}`,
 
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -95,14 +102,16 @@ export default function Body({ data }: { data: BlogResponseType }) {
             />
           </div>
           <div id="images">
-            {data.images.map((e, i) => (
-              <ImageElement
-                showError={displayMessage}
-                title="Other Image (Upload new to change)"
-                key={i}
-                aria={e}
-              />
-            ))}
+            {data.images
+              .filter((e) => !e.includes("youtu"))
+              .map((e, i) => (
+                <ImageElement
+                  showError={displayMessage}
+                  title="Other Image (Upload new to change)"
+                  key={i}
+                  aria={e}
+                />
+              ))}
             <ImageElement showError={displayMessage} title="Other Image" />
             <ImageElement showError={displayMessage} title="Other Image" />
             <ImageElement showError={displayMessage} title="Other Image" />
@@ -110,7 +119,11 @@ export default function Body({ data }: { data: BlogResponseType }) {
             <ImageElement showError={displayMessage} title="Other Image" />
             <ImageElement showError={displayMessage} title="Other Image" />
           </div>
-
+          <InputElement
+            title="Enter Youtube link"
+            value={vid}
+            setter={setVid}
+          />
           <button className="action">Update Post</button>
           <span className="action" onClick={() => handleDelete()}>
             Delete

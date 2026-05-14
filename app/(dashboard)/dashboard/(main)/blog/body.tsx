@@ -11,7 +11,7 @@ import { BlogResponseType } from "@/app/components/js/dataTypes";
 import { blogUrl } from "@/app/components/js/config";
 
 import { useRouter } from "next/navigation";
-import { ImageElement, TextareaElement } from "../utilities";
+import { ImageElement, InputElement, TextareaElement } from "../utilities";
 import Link from "next/link";
 import Paginate from "@/app/components/js/pager/Paginate";
 import { uploadFile } from "@/app/components/js/firebaseconfig";
@@ -25,7 +25,7 @@ export default function Body({ data }: { data: BlogResponseType[] }) {
   const [title, setTitle] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
   const [body, setBody] = useState<string>("");
-
+  const [vid, setVid] = useState("");
   const [pageBlog, setPageBlog] = useState(data);
 
   const router = useRouter();
@@ -37,6 +37,7 @@ export default function Body({ data }: { data: BlogResponseType[] }) {
     setMessage("Please wait...");
     const images1 = await uploadFile(`${title} title`, "title");
     const images = await uploadFile(`${title} images`, "images");
+    if (vid) images.push(vid);
     const { success, message } = await postRequest(
       blogUrl,
       {
@@ -46,7 +47,7 @@ export default function Body({ data }: { data: BlogResponseType[] }) {
         banner: images1[0],
         images,
       },
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -61,7 +62,7 @@ export default function Body({ data }: { data: BlogResponseType[] }) {
     const { success, message } = await deleteRequest(
       `${blogUrl}${id}`,
 
-      `${user?.token}`
+      `${user?.token}`,
     );
     if (success) {
       displayMessage(message);
@@ -97,7 +98,11 @@ export default function Body({ data }: { data: BlogResponseType[] }) {
             <ImageElement showError={displayMessage} title="Other Image" />
             <ImageElement showError={displayMessage} title="Other Image" />
           </div>
-
+          <InputElement
+            title="Enter Youtube link"
+            value={vid}
+            setter={setVid}
+          />
           <button className="action">Create Post</button>
         </form>
       </div>

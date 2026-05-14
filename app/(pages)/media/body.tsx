@@ -16,6 +16,7 @@ export default function Body({ media }: { media: MediaResponseType[] }) {
       <div className={styles.top}>
         <h1>Media Type</h1>
         <select value={format} onChange={(e) => setFormat(e.target.value)}>
+          <option value={""}>All</option>
           {FILETYPES.map((e, i) => (
             <option value={e} key={i}>
               {e}
@@ -25,7 +26,7 @@ export default function Body({ media }: { media: MediaResponseType[] }) {
       </div>
       <div className={styles.grid}>
         {media
-          .filter((e) => e.type == format)
+          .filter((e) => e.type.includes(format))
           .map((e, i) => (
             <div
               key={i}
@@ -33,8 +34,8 @@ export default function Body({ media }: { media: MediaResponseType[] }) {
                 e.orientation == "LANDSCAPE"
                   ? styles.landscape
                   : e.orientation == "PORTRAIT"
-                  ? styles.portrait
-                  : ""
+                    ? styles.portrait
+                    : ""
               }`}
             >
               {e.type == "IMAGE" ? (

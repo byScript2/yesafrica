@@ -30,7 +30,7 @@ export { analytics };
 
 export const uploadFile = async (
   title: string,
-  parent: string = "form"
+  parent: string = "form",
 ): Promise<string[]> => {
   const parentDiv = document.getElementById(`${parent}`);
   const children = parentDiv!.querySelectorAll("input[type=file]");
@@ -39,11 +39,14 @@ export const uploadFile = async (
     const image = children[i] as HTMLInputElement;
     const contImg = image.getAttribute("aria-describedby");
     if (image.files && image.files[0]) {
+      const rand = Math.floor(
+        Math.random() * Date.now() * Math.random() * Date.now(),
+      );
       const imgRef = ref(
         storage,
         `/${
           COMPANYNAME.replaceAll(".", "").split(" ")[0]
-        }/images/${title}/${title}${i}`
+        }/images/${title}/${rand}${i}`,
       );
       await uploadBytes(imgRef, image.files[0]);
       const url = await getDownloadURL(imgRef);
@@ -60,7 +63,7 @@ export const deleteFile = async (title: string, fileLen: number) => {
     for (let i = 0; i < fileLen; i++) {
       const fileRef = ref(
         storage,
-        `/${COMPANYNAME.split(" ")[0]}/images/${title}/${title}${i}`
+        `/${COMPANYNAME.split(" ")[0]}/images/${title}/${title}${i}`,
       );
       await deleteObject(fileRef);
     }

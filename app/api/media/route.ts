@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       });
     const body = await req.json();
 
-    const data = await new Media(body).save();
+    const data = await Media.create(body);
     return new NextResponse(JSON.stringify(data), {
       status: 201,
     });
